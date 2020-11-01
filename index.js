@@ -34,13 +34,11 @@ async function run() {
       headers: {'X-Authentication-Token': zenhubToken}
     }
   ).then(
-    _ => {
-      return
-    },
+    _ => {},
     reason => {
       return reason.message === 'Not found'
-        ? 'not-found'
-        : {message: reason.message}
+        ? core.debug(`Issue number ${issueNumber} does not exist`)
+        : throw new Error(`Failed to link PR #${prNumber} to issue #${issueNumber}: ${reason.message}`)
     }
   )
 }
