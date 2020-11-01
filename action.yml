@@ -1,0 +1,10 @@
+name: 'Post PR Create Action'
+description: 'link PR to Issue in Zenhub'
+author: 'Sasa Zejnilovic'
+inputs:
+  ZENHUB_TOKEN:
+    description: 'A ZenHub API token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

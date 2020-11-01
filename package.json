@@ -1,0 +1,26 @@
+{
+  "name": "post-pr-create-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zejnilovic/post-pr-create-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zejnilovic/post-pr-create-action/issues"
+  },
+  "homepage": "https://github.com/Zejnilovic/post-pr-create-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@vercel/ncc": "^0.24.1",
+    "axios": "^0.21.0"
+  }
+}
