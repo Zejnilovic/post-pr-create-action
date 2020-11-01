@@ -2,17 +2,16 @@ import axios from 'axios';
 
 const core = require("@actions/core");
 const github = require("@actions/github");
-
+const { Octokit } = require("@octokit/action");
 
 async function run() {
   const pullRequest = github.context.payload.pull_request;
   if (!pullRequest) { core.setFailed("Could not get pull request number from context"); }
   const zenhubToken = core.getInput('ZENHUB_TOKEN', {required: true})
-  const token = core.getInput("repo-token");
   const { owner, repo } = github.context.repo;
   const prNumber = pullRequest.number;
 
-  const octokit = new github.GitHub(token);
+  const octokit = new Octokit();
 
   const response = await octokit.pulls.get({
     owner: owner,
