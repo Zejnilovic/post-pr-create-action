@@ -23,7 +23,7 @@ async function run() {
   const issueNumber = branchName.split("/")[1].split("-")[0]
   const prRepoId = response.data.head.repo.id
 
-  await axios.post(
+  axios.post(
     `https://api.zenhub.com/v4/repositories/${repo}/connection`,
     {
       issue_number: issueNumber,
@@ -32,6 +32,15 @@ async function run() {
     },
     {
       headers: {'X-Authentication-Token': zenhubToken}
+    }
+  ).then(
+    _ => {
+      return
+    },
+    reason => {
+      return reason.message === 'Not found'
+        ? 'not-found'
+        : {message: reason.message}
     }
   )
 }
